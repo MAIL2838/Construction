@@ -1,0 +1,130 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-charcoal-950 text-stone-200 font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-serif;
+  }
+}
+
+@layer utilities {
+  .text-shimmer {
+    background: linear-gradient(
+      90deg,
+      #d5ccbc 0%,
+      #e8c04a 30%,
+      #f2d88b 50%,
+      #e8c04a 70%,
+      #d5ccbc 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 3s linear infinite;
+  }
+
+  .text-shimmer-subtle {
+    background: linear-gradient(
+      90deg,
+      #bfb09a 0%,
+      #d5ccbc 25%,
+      #e8c04a 50%,
+      #d5ccbc 75%,
+      #bfb09a 100%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+
+  .gold-line {
+    @apply block w-16 h-px bg-gold-400;
+  }
+
+  .glass-card {
+    background: rgba(28, 28, 28, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(213, 204, 188, 0.08);
+  }
+
+  .glass-card-hover {
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .glass-card-hover:hover {
+    background: rgba(42, 38, 30, 0.75);
+    border-color: rgba(232, 192, 74, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(232, 192, 74, 0.12);
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-7 py-3.5 font-sans font-medium text-sm tracking-widest uppercase cursor-pointer;
+    background: linear-gradient(135deg, #b8891a 0%, #d4a827 50%, #b8891a 100%);
+    background-size: 200% auto;
+    color: #0d0d0d;
+    border: none;
+    transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-position: right center;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(184, 137, 26, 0.35);
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-6 py-3 font-sans font-medium text-sm tracking-widest uppercase cursor-pointer;
+    border: 1px solid rgba(213, 204, 188, 0.25);
+    color: #d5ccbc;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+
+  .btn-ghost:hover {
+    border-color: rgba(232, 192, 74, 0.5);
+    color: #e8c04a;
+  }
+
+  .section-label {
+    @apply text-xs font-sans font-medium tracking-[0.2em] uppercase text-gold-400;
+  }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.animate-on-enter {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animate-on-enter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.animate-fade-in {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+
+.animate-fade-in.visible {
+  opacity: 1;
+}
