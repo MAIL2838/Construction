@@ -20,7 +20,7 @@ const pillars = [
   {
     icon: ScanLine,
     title: 'Final Handover Standard',
-    desc: 'No project is signed off until it meets our internal defect-zero checklist — regardless of client pressure or deadlines.',
+    desc: 'No project is signed off until it meets our internal defect-zero checklist, regardless of client pressure or deadlines.',
   },
 ];
 
@@ -43,7 +43,7 @@ export function Authority() {
 
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-          {/* Left — copy */}
+          {/* Left copy */}
           <div className={`animate-on-enter ${visible ? 'visible' : ''}`}>
             <span className="section-label">Our Approach</span>
             <div className="gold-line mt-3 mb-8" />
@@ -57,25 +57,9 @@ export function Authority() {
               control quality, eliminate delays, and deliver consistent results. From initial
               planning to final handover, every stage is executed with precision.
             </p>
-
-            {/* Horizontal stat row */}
-            <div className="mt-12 grid grid-cols-3 gap-px bg-stone-800/30 border border-stone-800/30">
-              {[
-                { value: '100%', label: 'On-time delivery rate' },
-                { value: '0', label: 'Defects at handover' },
-                { value: '12+', label: 'Years in operation' },
-              ].map(({ value, label }) => (
-                <div key={label} className="bg-charcoal-900 px-5 py-6 text-center">
-                  <p className="font-serif text-2xl font-semibold text-gold-400 mb-1">{value}</p>
-                  <p className="font-sans text-[10px] text-stone-600 tracking-[0.1em] uppercase leading-snug">
-                    {label}
-                  </p>
-                </div>
-              ))}
-            </div>
           </div>
 
-          {/* Right — pillars */}
+          {/* Right pillars */}
           <div className="space-y-px bg-stone-800/20 border border-stone-800/30">
             {pillars.map(({ icon: Icon, title, desc }, i) => (
               <div

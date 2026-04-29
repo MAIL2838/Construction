@@ -6,17 +6,8 @@ type FormState = {
   name: string;
   email: string;
   phone: string;
-  projectType: string;
-  message: string;
+  details: string;
 };
-
-const projectTypes = [
-  'Residential Construction',
-  'Commercial Project',
-  'Renovation & Extension',
-  'Project Management',
-  'Other',
-];
 
 export function Contact() {
   const { ref, visible } = useInView<HTMLElement>();
@@ -24,14 +15,13 @@ export function Contact() {
     name: '',
     email: '',
     phone: '',
-    projectType: '',
-    message: '',
+    details: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -39,14 +29,18 @@ export function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    await new Promise((r) => setTimeout(r, 900));
-    setSubmitting(false);
-    setSubmitted(true);
+    try {
+      await new Promise((r) => setTimeout(r, 900));
+      setSubmitted(true);
+    } catch {
+      // fallback silently
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <section id="contact" ref={ref} className="py-28 relative">
-      {/* Background */}
       <div
         className="absolute inset-0"
         style={{
@@ -70,11 +64,10 @@ export function Contact() {
               <span className="text-shimmer">Consultation</span>
             </h2>
             <p className="font-sans font-light text-stone-500 text-sm leading-relaxed mb-12 max-w-md">
-              Tell us about your project. We'll respond within one business day to arrange a
+              Tell us about your project. We will respond within one business day to arrange a
               no-obligation consultation with our senior team.
             </p>
 
-            {/* Contact details */}
             <div className="space-y-5">
               {[
                 { icon: Phone, label: 'Call Us', value: '+44 20 7946 0000' },
@@ -96,7 +89,7 @@ export function Contact() {
             </div>
           </div>
 
-          {/* Right column — Form */}
+          {/* Right column - Form */}
           <div
             className={`animate-on-enter ${visible ? 'visible' : ''}`}
             style={{ transitionDelay: '150ms' }}
@@ -116,81 +109,59 @@ export function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="glass-card p-8 space-y-5">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-stone-500 mb-2">
-                      Full Name *
-                    </label>
-                    <input
-                      type="text"
-                      name="name"
-                      required
-                      value={form.name}
-                      onChange={handleChange}
-                      className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-200 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors placeholder-stone-700"
-                      placeholder="John Whitmore"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-stone-500 mb-2">
-                      Email *
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      required
-                      value={form.email}
-                      onChange={handleChange}
-                      className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-200 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors placeholder-stone-700"
-                      placeholder="john@example.com"
-                    />
-                  </div>
-                </div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  <div>
-                    <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-stone-500 mb-2">
-                      Phone
-                    </label>
-                    <input
-                      type="tel"
-                      name="phone"
-                      value={form.phone}
-                      onChange={handleChange}
-                      className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-200 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors placeholder-stone-700"
-                      placeholder="+44 7700 000000"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-stone-500 mb-2">
-                      Project Type
-                    </label>
-                    <select
-                      name="projectType"
-                      value={form.projectType}
-                      onChange={handleChange}
-                      className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-400 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors appearance-none cursor-pointer"
-                    >
-                      <option value="" disabled>
-                        Select type
-                      </option>
-                      {projectTypes.map((pt) => (
-                        <option key={pt} value={pt} className="bg-charcoal-800">
-                          {pt}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                <div>
+                  <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-stone-500 mb-2">
+                    Name *
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    required
+                    value={form.name}
+                    onChange={handleChange}
+                    className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-200 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors placeholder-stone-700"
+                    placeholder="Your full name"
+                  />
                 </div>
 
                 <div>
                   <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-stone-500 mb-2">
-                    Project Brief
+                    Email *
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    required
+                    value={form.email}
+                    onChange={handleChange}
+                    className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-200 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors placeholder-stone-700"
+                    placeholder="you@example.com"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-stone-500 mb-2">
+                    Phone
+                  </label>
+                  <input
+                    type="tel"
+                    name="phone"
+                    value={form.phone}
+                    onChange={handleChange}
+                    className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-200 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors placeholder-stone-700"
+                    placeholder="+44 7700 000000"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-stone-500 mb-2">
+                    Project Details *
                   </label>
                   <textarea
-                    name="message"
+                    name="details"
                     rows={4}
-                    value={form.message}
+                    required
+                    value={form.details}
                     onChange={handleChange}
                     className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-200 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors resize-none placeholder-stone-700"
                     placeholder="Briefly describe your project, location, and timeline..."

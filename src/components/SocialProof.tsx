@@ -29,7 +29,7 @@ const testimonials = [
     role: 'Private Residential Client',
   },
   {
-    quote: 'Everything was delivered exactly as agreed — no surprises.',
+    quote: 'Everything was delivered exactly as agreed, no surprises.',
     author: 'M. Ashford',
     role: 'Commercial Developer',
   },

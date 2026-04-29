@@ -60,7 +60,7 @@ export function Pricing() {
               </p>
               <p className="font-sans font-light text-stone-500 text-sm leading-relaxed max-w-md">
                 After a no-obligation consultation, we produce a fully itemised quote scoped
-                to your exact project requirements — no estimates, no guesswork.
+                to your exact project requirements, no estimates, no guesswork.
               </p>
             </div>
 

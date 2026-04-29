@@ -4,7 +4,7 @@ import { useInView } from '../hooks/useInView';
 const features = [
   {
     title: 'Engineered for Long-Term Durability',
-    desc: 'We specify materials and methods that stand the test of time — no cost-cutting that compromises structural integrity.',
+    desc: 'We specify materials and methods that stand the test of time, no cost-cutting that compromises structural integrity.',
   },
   {
     title: 'Experienced, Controlled Execution',
@@ -16,7 +16,7 @@ const features = [
   },
   {
     title: 'Transparent Build Process',
-    desc: 'Clients receive regular reporting, site access, and honest updates — no surprises, ever.',
+    desc: 'Clients receive regular reporting, site access, and honest updates, no surprises, ever.',
   },
   {
     title: 'Scalable for Complex Projects',

@@ -60,7 +60,7 @@ export function Services() {
               <span className="text-shimmer-subtle">Build</span>
             </h2>
             <p className="font-sans font-light text-stone-500 text-sm leading-relaxed max-w-sm">
-              Every engagement is approached with the same discipline, rigour, and commitment to quality — regardless of scale.
+              Every engagement is approached with the same discipline, rigour, and commitment to quality, regardless of scale.
             </p>
           </div>
         </div>

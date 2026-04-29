@@ -5,7 +5,7 @@ const pillars = [
   {
     icon: Award,
     title: 'Precision Craftsmanship',
-    desc: 'Every detail executed to the highest standard — no shortcuts, no compromises.',
+    desc: 'Every detail executed to the highest standard, no shortcuts, no compromises.',
   },
   {
     icon: Shield,
