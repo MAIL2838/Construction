@@ -6,8 +6,17 @@ type FormState = {
   name: string;
   email: string;
   phone: string;
+  service: string;
   details: string;
 };
+
+const serviceOptions = [
+  'Residential Construction',
+  'Commercial Projects',
+  'Renovations',
+  'Extensions',
+  'Other',
+];
 
 export function Contact() {
   const { ref, visible } = useInView<HTMLElement>();
@@ -15,13 +24,14 @@ export function Contact() {
     name: '',
     email: '',
     phone: '',
+    service: '',
     details: '',
   });
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
   ) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -151,6 +161,27 @@ export function Contact() {
                     className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-200 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors placeholder-stone-700"
                     placeholder="+44 7700 000000"
                   />
+                </div>
+
+                <div>
+                  <label className="block text-[10px] font-sans tracking-[0.15em] uppercase text-stone-500 mb-2">
+                    Select Service
+                  </label>
+                  <select
+                    name="service"
+                    value={form.service}
+                    onChange={handleChange}
+                    className="w-full bg-charcoal-800/60 border border-stone-700/40 text-stone-400 font-sans text-sm px-4 py-3 outline-none focus:border-gold-500/40 transition-colors appearance-none cursor-pointer"
+                  >
+                    <option value="" disabled>
+                      Choose a service
+                    </option>
+                    {serviceOptions.map((s) => (
+                      <option key={s} value={s} className="bg-charcoal-800">
+                        {s}
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
                 <div>

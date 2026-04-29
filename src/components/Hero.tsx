@@ -46,19 +46,10 @@ export function Hero() {
       <div className="absolute top-24 right-10 w-px h-24 bg-gradient-to-b from-transparent via-gold-500/20 to-transparent hidden lg:block" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-6 lg:px-10 text-center">
-        {/* Label */}
-        <div
-          className={`animate-fade-in ${loaded ? 'visible' : ''}`}
-          style={{ transitionDelay: '0ms' }}
-        >
-          <span className="section-label">Premium Construction</span>
-          <span className="gold-line mx-auto mt-3 mb-8" />
-        </div>
-
         {/* Headline */}
         <h1
           className={`animate-on-enter ${loaded ? 'visible' : ''} font-serif text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-semibold leading-[1.08] tracking-tight mb-8`}
-          style={{ transitionDelay: '120ms' }}
+          style={{ transitionDelay: '0ms' }}
         >
           <span className="text-shimmer">Built with Precision.</span>
           <br />
@@ -79,7 +70,7 @@ export function Hero() {
         {/* CTA group */}
         <div
           className={`animate-on-enter ${loaded ? 'visible' : ''} flex flex-col sm:flex-row items-center justify-center gap-4`}
-          style={{ transitionDelay: '360ms' }}
+          style={{ transitionDelay: '240ms' }}
         >
           <button onClick={scrollToContact} className="btn-primary">
             Book Consultation
@@ -95,17 +86,6 @@ export function Hero() {
           >
             View Services
           </a>
-        </div>
-
-        {/* Scroll indicator */}
-        <div
-          className={`animate-fade-in ${loaded ? 'visible' : ''} mt-20 flex flex-col items-center gap-2`}
-          style={{ transitionDelay: '600ms' }}
-        >
-          <div className="w-px h-12 bg-gradient-to-b from-transparent via-gold-500/40 to-transparent" />
-          <span className="text-[10px] font-sans tracking-[0.25em] uppercase text-stone-600">
-            Scroll
-          </span>
         </div>
       </div>
     </section>
